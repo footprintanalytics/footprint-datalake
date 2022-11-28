@@ -1,0 +1,75 @@
+version: 2
+
+sources:
+  - name: footprint
+    database: iceberg
+    schema: footprint
+    tables:
+      - name: arbitrum_logs
+      - name: avalanche_logs
+      - name: boba_logs
+      - name: bsc_logs
+      - name: celo_logs
+      - name: oasys_logs
+      - name: dfk_logs
+      - name: ethereum_logs
+      - name: fantom_logs
+      - name: harmony_logs
+      - name: heco_logs
+      - name: iotex_logs
+      - name: iotex_transaction_logs
+      - name: moonbeam_logs
+      - name: moonriver_logs
+      - name: optimism_logs
+      - name: polygon_logs
+      - name: thunder_core_logs
+      - name: arbitrum_transactions
+      - name: oasys_transactions
+      - name: avalanche_transactions
+      - name: boba_transactions
+      - name: doge_transactions
+      - name: bitcoin_transactions
+      - name: bsc_transactions
+      - name: celo_transactions
+      - name: dfk_transactions
+      - name: eos_transactions
+      - name: ethereum_transactions
+      - name: fantom_transactions
+      - name: harmony_transactions
+      - name: heco_transactions
+      - name: hive_transactions
+      - name: iotex_transactions
+      - name: moonbeam_transactions
+      - name: moonriver_transactions
+      - name: optimism_transactions
+      - name: polygon_transactions
+      - name: solana_transactions
+      - name: thunder_core_transactions
+      - name: wax_transactions
+      - name: arbitrum_token_transfers
+      - name: oasys_token_transfers
+      - name: avalanche_token_transfers
+      - name: boba_token_transfers
+      - name: bsc_token_transfers
+      - name: celo_token_transfers
+      - name: dfk_token_transfers
+      - name: eos_token_transfers
+      - name: ethereum_token_transfers
+      - name: fantom_token_transfers
+      - name: harmony_token_transfers
+      - name: heco_token_transfers
+      - name: moonbeam_token_transfers
+      - name: moonriver_token_transfers
+      - name: optimism_token_transfers
+      - name: polygon_token_transfers
+      - name: solana_token_transfers
+      - name: thunder_core_token_transfers
+      - name: wax_token_transfers
+      - name: wax_actions
+      - name: eos_actions
+      - name: iotex_actions
+      - name: ethereum_blocks
+      - name: ethereum_traces
+      - name: bsc_blocks
+      - name: bsc_traces
+

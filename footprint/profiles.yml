@@ -1,0 +1,13 @@
+footprint:
+  target: test
+  outputs:
+    test:
+      type: devnull
+      schema: test
+      database: test
+      username: user
+      password: password
+      host: localhost
+      threads: 1
+
+
