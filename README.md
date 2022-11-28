@@ -12,10 +12,11 @@ dbt应运而生，提供了可以将sql代码模块化的功能，通过写*宏*
 如果想了解更多，可以去dbt的官网，这里不展开。
 
 # 安装
-1. pyenv 创建python虚拟环境 (或者直接使用项目venv文件下的python环境，若直接使用，则无需后续步骤)
+1. pyenv 创建python虚拟环境 (或者直接使用项目venv文件下的python环境，则无需后面的不走)
 2. pip install dbt-core
-3. pip install dbt-trino  `Footprint 使用的是trino引擎`
-4. pip install dbt-devnull  `让我们可以在没有trino连接的情况下编译sql`
+3. dbt deps `安装dbt 相关依赖`
+4. pip install dbt-trino  `Footprint 使用的是trino引擎`
+5. pip install dbt-devnull  `让我们可以在没有trino连接的情况下编译sql`
 
 # 使用
 1. 在./footprint/models/example/里，有多个demo可供参考
@@ -35,5 +36,5 @@ dbt应运而生，提供了可以将sql代码模块化的功能，通过写*宏*
 3. Readme English version
 
 ## links
-twitter: https://twitter.com/ceilingceiling0
-Footprint discord: https://discord.gg/Xv5RSNxh
+1. twitter: https://twitter.com/ceilingceiling0
+2. Footprint discord: https://discord.gg/Xv5RSNxh
