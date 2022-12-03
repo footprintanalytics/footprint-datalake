@@ -92,10 +92,6 @@ sources:
       - name: gamefi_contract_info
       - name: gamefi_protocol_daily_stats
       - name: gamefi_protocol_info
-      - name: protocol_active_address
-      - name: protocol_daily_stats
-      - name: protocol_info
-      - name: protocol_transactions
 
       # DeFi
       - name: defi_pool_info
@@ -129,7 +125,6 @@ sources:
       - name: address_token_balance_latest_stats
       - name: address_token_daily_stats
       - name: address_token_transfers
-      - name: protocol_active_address
       - name: solana_account_mapping
 
       # Label
