@@ -5,6 +5,7 @@ sources:
     database: iceberg
     schema: footprint
     tables:
+      # Chain
       - name: arbitrum_logs
       - name: avalanche_logs
       - name: boba_logs
@@ -72,4 +73,70 @@ sources:
       - name: ethereum_traces
       - name: bsc_blocks
       - name: bsc_traces
+      - name: ethereum_decoded_events
+      - name: chain_info
 
+      # NFT
+      - name: marketplace_nft_collection_daily_stats
+      - name: nft_collection_daily_stats
+      - name: nft_collection_info
+      - name: nft_collection_transfers_daily_stats
+      - name: nft_info
+      - name: nft_latest_stats
+      - name: nft_orders
+      - name: nft_token_attributes
+      - name: nft_transactions
+      - name: nft_transfers
+
+      # GameFi
+      - name: gamefi_contract_info
+      - name: gamefi_protocol_daily_stats
+      - name: gamefi_protocol_info
+      - name: protocol_active_address
+      - name: protocol_daily_stats
+      - name: protocol_info
+      - name: protocol_transactions
+
+      # DeFi
+      - name: defi_pool_info
+      - name: defi_pool_info_return_token
+      - name: defi_protocol_daily_stats
+      - name: defi_transactions_90d
+      - name: dex_liquidity_transactions
+      - name: dex_swap_transactions
+      - name: option_transactions
+
+      # Token
+      - name: token_chain_daily_stats
+      - name: token_chain_info
+      - name: token_daily_stats
+      - name: token_info
+      - name: token_mint_burn
+      - name: token_price_5min
+
+      # Prorocol
+      - name: contract_info
+      - name: protocol_active_address
+      - name: protocol_address_retention_daily
+      - name: protocol_address_retention_monthly
+      - name: protocol_address_retention_weekly
+      - name: protocol_daily_stats
+      - name: protocol_info
+      - name: protocol_transactions
+
+      # Address
+      - name: address_token_balance
+      - name: address_token_balance_latest_stats
+      - name: address_token_daily_stats
+      - name: address_token_transfers
+      - name: protocol_active_address
+      - name: solana_account_mapping
+
+      # Label
+      - name: address_tag
+      - name: entity_address_info
+      - name: entity_info
+      - name: entity_latest_stats
+      - name: entity_tag
+      - name: entity_token_latest_stats
+      - name: transaction_entity_tag
