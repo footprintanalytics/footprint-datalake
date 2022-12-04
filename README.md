@@ -14,11 +14,9 @@ If you want to know more, you can go to dbt's official website, so I won't expan
 
 # Install
 1. use pyenv to create a python virtual environment
-(or directly use the python environment in `venv` file, and no need to follow the steps behind)
 2. `pip install dbt-core`
-3. `dbt deps` *to install dbt dependency*
-4. `pip install dbt-trino`  *Footprint use trino as her data engine*
-5. `pip install dbt-devnull`  *Allow us to use dbt without a trino connection*
+3. `pip install dbt-devnull`  *allow us to use dbt without a database connection*
+3. `cd footprint` & `dbt deps` *to install dbt dependency*
 
 # Usage
 1. There are several demos in `./footprint/models/example/`
@@ -26,7 +24,7 @@ If you want to know more, you can go to dbt's official website, so I won't expan
 You can also set new tables in it if it isn't up-to-date.
 3. All the marcos are in `./footprint/macros/`.
 4. When you want to compile SQL, you need to cd into `footprint`,
-and run `dbt compile -s {my_first_footprint_event_model}` in your vitual environment
+and run `dbt compile -s my_first_footprint_event_model` in your vitual environment
 5. Then the SQL will be generated into `./footprint/target/compiled/footprint/models/example/my_first_footprint_event_model.sql`
 6. Copy the SQL and paste into Footprint SQL query platform, then you can debug & execute.
 
@@ -35,6 +33,41 @@ This project currently belongs to personal maintenance, the code has not yet for
 You are also welcome to submit pr, together to build her into a good tool!
 
 # Todo:
+
+
+# Introducción
+[Footprint Analytics](https://www.footprint.network/dashboards) es una plataforma de análisis de datos de autoservicio sobre blockchain,
+que puede arrastrar y soltar componentes para lograr el análisis de datos en la cadena.
+Además, proporciona la función de consulta SQL, y la API SQL.
+Este proyecto trata de proporcionar herramientas para aquellos que utilizan SQL.
+
+Este proyecto utiliza [`dbt`](https://www.getdbt.com/) para gestionar SQL.
+¿Por qué usar dbt?
+Los desarrolladores de SQL pueden tener la sensación de que los códigos SQL son siempre redundantes,
+y no hay manera de reutilizarlos.
+`dbt` nació para proporcionar la función que puede modular el código SQL y reutilizar el código escribiendo *macros*.
+Una vez que hemos escrito la plantilla de SQL, sólo tenemos que ejecutar `dbt compile` para generar automáticamente
+el SQL ejecutable. Si quieres saber más, puedes ir a la web oficial de dbt, así que no me extenderé aquí.
+
+# Instalar
+1. Usa pyenv para crear un entorno virtual de python (o directamente usa el entorno de python en el archivo venv, y no necesitas seguir los pasos detrás)
+2. `pip install dbt-core`
+3. `pip install dbt-devnull` *nos permite usar dbt sin conexión*
+4. `cd footprint` & `dbt deps` *para instalar la dependencia de dbt*
+
+# Uso
+1. Hay varios demos en `./footprint/models/example/`
+2. Ya he establecido todas las tablas de Footprint en `./footprint/models/sources.yml`.
+También puedes poner nuevas tablas en él si no está actualizado.
+3. Todos los marcos están en `./footprint/macros/`.
+4. Cuando quieras compilar el SQL, tienes que entrar en footprint,
+y ejecutar `dbt compile -s my_first_footprint_event_model` en tu entorno vitual
+5. Entonces el SQL se generará en `./footprint/target/compiled/footprint/models/example/my_first_footprint_event_model.sql`
+6. Copia el SQL y pégalo en la plataforma de consultas SQL de Footprint, luego puedes depurar y ejecutar.
+
+# Aviso
+Este proyecto actualmente pertenece al mantenimiento personal, el código aún no se ha formado, habrá más cambios.
+¡También eres bienvenido a enviar pr, juntos para construirla en una buena herramienta!
 
 # 介绍
 [Footprint Analytics](https://www.footprint.network/dashboards)是一个区块链的自助数据分析平台，可以通过拖拉组件，实现链上数据分析。
@@ -48,11 +81,10 @@ dbt应运而生，提供了可以将sql代码模块化的功能，通过写**宏
 如果想了解更多，可以去dbt的官网，这里不展开。
 
 # 安装
-1. pyenv 创建python虚拟环境 (或者直接使用项目venv文件下的python环境，则无需后面的步骤)
+1. pyenv 创建python虚拟环境
 2. `pip install dbt-core`
-3. `dbt deps` *安装dbt 相关依赖*
-4. `pip install dbt-trino`  *Footprint 使用的是trino引擎*
-5. `pip install dbt-devnull`  *让我们可以在没有trino连接的情况下编译sql*
+3. `pip install dbt-devnull`  *让我们可以在没有trino连接的情况下编译sql*
+4. `cd footprint` & `dbt deps` *安装dbt 相关依赖*
 
 # 使用
 1. 在./footprint/models/example/里，有多个demo可供参考
@@ -67,4 +99,4 @@ dbt应运而生，提供了可以将sql代码模块化的功能，通过写**宏
 
 ## links
 1. Twitter: https://twitter.com/ceilingceiling0
-2. Footprint discord: https://discord.gg/Xv5RSNxh
+2. Footprint discord: https://discord.gg/Xv5RSNxhdbt
