@@ -24,7 +24,7 @@ If you want to know more, you can go to dbt's official website, so I won't expan
 You can also set new tables in it if it isn't up-to-date.
 3. All the marcos are in `./footprint/macros/`.
 4. When you want to compile SQL, you need to cd into `footprint`,
-and run `dbt compile -s my_first_footprint_event_model` in your vitual environment
+and run `dbt compile -s my_first_footprint_event_model` in your virtual environment
 5. Then the SQL will be generated into `./footprint/target/compiled/footprint/models/example/my_first_footprint_event_model.sql`
 6. Copy the SQL and paste into Footprint SQL query platform, then you can debug & execute.
 
@@ -61,7 +61,7 @@ el SQL ejecutable. Si quieres saber más, puedes ir a la web oficial de dbt, as�
 También puedes poner nuevas tablas en él si no está actualizado.
 3. Todos los marcos están en `./footprint/macros/`.
 4. Cuando quieras compilar el SQL, tienes que entrar en footprint,
-y ejecutar `dbt compile -s my_first_footprint_event_model` en tu entorno vitual
+y ejecutar `dbt compile -s my_first_footprint_event_model` en tu entorno virtual
 5. Entonces el SQL se generará en `./footprint/target/compiled/footprint/models/example/my_first_footprint_event_model.sql`
 6. Copia el SQL y pégalo en la plataforma de consultas SQL de Footprint, luego puedes depurar y ejecutar.
 
