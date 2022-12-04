@@ -1,7 +1,43 @@
 Welcome to dbt-footprint!
 
+# Intro
+[Footprint Analytics](https://www.footprint.network/dashboards) is a self-service data analysis platform about blockchain,
+which can drag and drop components to achieve on-chain data analysis. Also, she provides SQL query function, and SQL API.
+This project tries to provide tools for those who use SQL.
+
+This project uses [`dbt`](https://www.getdbt.com/) to manage SQL.
+Why use dbt?
+SQL developer may have the feeling that SQL codes are always redundant, and there is no way to reuse it.
+`dbt` was born to provide the function that can modularize the SQL code and reuse the code by writing **macros**.
+Once we have written the template of SQL, we just need to run `dbt compile` to automatically generate the executable SQL.
+If you want to know more, you can go to dbt's official website, so I won't expand here.
+
+# Install
+1. use pyenv to create a python virtual environment
+(or directly use the python environment in `venv` file, and no need to follow the steps behind)
+2. `pip install dbt-core`
+3. `dbt deps` *to install dbt dependency*
+4. `pip install dbt-trino`  *Footprint use trino as her data engine*
+5. `pip install dbt-devnull`  *Allow us to use dbt without a trino connection*
+
+# Usage
+1. There are several demos in `./footprint/models/example/`
+2. I have already set all the Footprint tables into  `./footprint/models/sources.yml`.
+You can also set new tables in it if it isn't up-to-date.
+3. All the marcos are in `./footprint/macros/`.
+4. When you want to compile SQL, you need to cd into `footprint`,
+and run `dbt compile -s {my_first_footprint_event_model}` in your vitual environment
+5. Then the SQL will be generated into `./footprint/target/compiled/footprint/models/example/my_first_footprint_event_model.sql`
+6. Copy the SQL and paste into Footprint SQL query platform, then you can debug & execute.
+
+# Notice
+This project currently belongs to personal maintenance, the code has not yet formed, there will be more changes.
+You are also welcome to submit pr, together to build her into a good tool!
+
+# Todo:
+
 # 介绍
-[Footprint Analytics](https://www.footprint.network/dashboards)是一个区块链上的自助数据分析平台，可以通过拖拉组件，实现链上数据分析。
+[Footprint Analytics](https://www.footprint.network/dashboards)是一个区块链的自助数据分析平台，可以通过拖拉组件，实现链上数据分析。
 同时，她也提供sql查询的功能，还有sql的API。本项目尝试为习惯使用sql进行分析的朋友提供工具。
 
 本项目使用[dbt](https://www.getdbt.com/)来管理sql。
@@ -28,12 +64,6 @@ dbt应运而生，提供了可以将sql代码模块化的功能，通过写**宏
 
 # 特别说明
 本项目目前属于个人维护，代码尚未成型，会有较多改动。也欢迎大家共同提交pr，把她共建成一个好用的工具！
-
-# Todo:
-1. 将Footprint上所有table补充到source.yml
-2. 细化安装流程
-3. 新增常用宏，改写现有宏，使其更通用
-3. Readme English version
 
 ## links
 1. Twitter: https://twitter.com/ceilingceiling0
