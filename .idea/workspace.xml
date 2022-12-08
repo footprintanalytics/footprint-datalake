@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ab7f6206-4675-49c3-8b18-0dc1bc56865c" name="Default Changelist" comment="gitignore .idea/">
       <change afterPath="$PROJECT_DIR$/footprint/models/example/erc721_transfers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
