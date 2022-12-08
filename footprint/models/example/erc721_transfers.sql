@@ -5,25 +5,28 @@ erc721_collection as (
         collection_name,
         collection_slug,
         contract_address
-    from {{source_data('footprint', 'nft_collection_info')}}
+    from {{source('footprint', 'nft_collection_info')}}
     where standard = 'ERC721'
 ),
 eth as (
     select
     *
-    from {{source_data('footprint', 'ethereum_token_transfers')}}
+    ,'Ethereum' as chain
+    from {{source('footprint', 'ethereum_token_transfers')}}
     {{incremental_timestamp_filter_realtime(time_field_name='block_timestamp')}}
 ),
 bsc as (
     select
     *
-    from {{source_data('footprint', 'bsc_token_transfers')}}
+     ,'BNB Chain' as chain
+    from {{source('footprint', 'bsc_token_transfers')}}
     {{incremental_timestamp_filter_realtime(time_field_name='block_timestamp')}}
 ),
 polygon as (
     select
     *
-    from {{source_data('footprint', 'polygon_token_transfers')}}
+    ,'Polygon' as chain
+    from {{source('footprint', 'polygon_token_transfers')}}
     {{incremental_timestamp_filter_realtime(time_field_name='block_timestamp')}}
 ),
 union_transfers as (
