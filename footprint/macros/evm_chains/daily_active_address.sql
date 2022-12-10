@@ -4,7 +4,7 @@
             Date(block_timestamp) as on_date
             ,'{{chain}}' as chain
             ,count(distinct from_address) as active_user
-        from footprint.{{chain}}_transactions
+        from footprint.{{chain.lower()}}_transactions
         where 1=1
         and block_timestamp >= date_add('day', -1 * {{previous_days}}, current_date)
         and block_timestamp < current_date
