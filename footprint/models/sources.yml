@@ -87,6 +87,8 @@ sources:
       - name: nft_token_attributes
       - name: nft_transactions
       - name: nft_transfers
+      - name: nft_aggregator_info
+      - name: nft_aggregator_transactions
 
       # GameFi
       - name: gamefi_contract_info
