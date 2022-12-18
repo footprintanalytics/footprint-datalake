@@ -110,3 +110,34 @@ daily_balance as (
     order by 1
 )
 {%- endmacro %}
+
+
+{% macro daily_token_holders(chain='ethereum', token_address='', first_date='2015-07-30', block_timestamp=none) -%}
+{{in_out_flow(chain=chain, token_address=token_address, block_timestamp=none)}}
+double_entry_book_grouped_by_date as (
+    select wallet_address, token_slug, sum(amount) as balance, Date(block_timestamp) as on_date
+    from union_flow
+    group by wallet_address, token_slug, Date(block_timestamp)
+),
+daily_balances_with_gaps as (
+    select
+        wallet_address,
+        token_slug,
+        on_date,
+        sum(balance) over (partition by wallet_address, token_slug order by on_date)            as balance,
+        lead(on_date, 1, current_date) over (partition by wallet_address, token_slug order by on_date) as next_date
+    from double_entry_book_grouped_by_date
+),
+calendar AS (
+    select on_date from unnest(sequence(FROM_ISO8601_DATE('{{first_date}}'), current_date, interval '1' day)) t(on_date)
+),
+daily_holder_balance as (
+    select wallet_address, token_slug, calendar.on_date, balance
+    from daily_balances_with_gaps dbwg
+    right join calendar
+    on dbwg.on_date <= calendar.on_date
+    and calendar.on_date < dbwg.next_date
+    and dbwg.balance > 0
+    order by calendar.on_date asc, dbwg.balance desc
+)
+{%- endmacro %}
