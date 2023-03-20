@@ -65,9 +65,6 @@ y ejecutar `dbt compile -s my_first_footprint_event_model` en tu entorno virtual
 5. Entonces el SQL se generará en `./footprint/target/compiled/footprint/models/example/my_first_footprint_event_model.sql`
 6. Copia el SQL y pégalo en la plataforma de consultas SQL de Footprint, luego puedes depurar y ejecutar.
 
-# Aviso
-Este proyecto actualmente pertenece al mantenimiento personal, el código aún no se ha formado, habrá más cambios.
-¡También eres bienvenido a enviar pr, juntos para construirla en una buena herramienta!
 
 
 # Install
