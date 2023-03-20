@@ -78,5 +78,5 @@ Este proyecto actualmente pertenece al mantenimiento personal, el código aún n
 
 
 ## links
-1. Twitter: https://twitter.com/ceilingceiling0
+1. Twitter: https://twitter.com/Footprint_Data
 2. Footprint discord: https://discord.gg/Xv5RSNxhdbt
