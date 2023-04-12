@@ -12,20 +12,41 @@ SQL developer may have the feeling that SQL codes are always redundant, and ther
 Once we have written the template of SQL, we just need to run `dbt compile` to automatically generate the executable SQL.
 If you want to know more, you can go to dbt's official website, so I won't expand here.
 
-# Install
-1. use pyenv to create a python virtual environment
-2. `pip install dbt-core`
-3. `pip install dbt-devnull`  *allow us to use dbt without a database connection*
-3. `cd footprint` & `dbt deps` *to install dbt dependency*
+# Getting Started
+
+## Prerequisites
+
+- Fork this repo and clone your fork locally. See Github's [guide](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) on contributing to projects.
+- python 3.9 installed. Our recommendation is to follow the [Hitchhiker's Guide to Python](https://docs.python-guide.org/starting/installation/)
+- [pip](https://pip.pypa.io/en/stable/installation/) installed
+- [pipenv](https://pypi.org/project/pipenv/) installed
+- paths for both pip and pipenv are set (this should happen automatically but sometimes does not). If you run into issues like "pipenv: command not found", try troubleshooting with the pip or pipenv documentation.
+
+
+## install
+
+- create a python virtual environment
+```shell
+pipenv shell
+```
+
+- install python dependencies
+```shell
+pipenv install
+```
+
+- install dbt dependencies
+```shell
+dbt deps
+```
 
 # Usage
-1. There are several demos in `./footprint/models/example/`
-2. I have already set all the Footprint tables into  `./footprint/models/sources.yml`.
+1. There are several demos in `./models/example/`
+2. I have already set all the Footprint tables into  `./models/sources.yml`.
 You can also set new tables in it if it isn't up-to-date.
-3. All the marcos are in `./footprint/macros/`.
-4. When you want to compile SQL, you need to cd into `footprint`,
-and run `dbt compile -s my_first_footprint_event_model` in your virtual environment
-5. Then the SQL will be generated into `./footprint/target/compiled/footprint/models/example/my_first_footprint_event_model.sql`
+3. All the marcos are in `./macros/`.
+4. When you want to compile SQL, you need to run `dbt compile -s my_first_footprint_event_model` in your virtual environment
+5. Then the SQL will be generated into `./target/compiled/footprint/models/example/my_first_footprint_event_model.sql`
 6. Copy the SQL and paste into Footprint SQL query platform, then you can debug & execute.
 
 # Notice

@@ -1,0 +1,87 @@
+
+version: 2
+
+block:
+  name: protocol_transactions
+  date_field: block_timestamp
+  level: silver
+  status: done
+  remark: coversc more than 16 chains
+  time_period: all
+  domain: protocol
+  fp_menu: true
+  sub_domain: protocol_metrics
+  dependencies:
+    - solana_protocol_transactions
+
+models:
+  - name: protocol_transactions
+    description: This table records the transactions for different GameFi protocols.
+    config:
+      schema: silver
+      tags: ['protocol_transactions']
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - chain
+            - transaction_hash
+            - protocol_slug
+      - latest_time_after_yesterday_by_columns:
+          date_col: block_timestamp
+          columns:
+            - chain
+    columns:
+      - name: block_timestamp
+        type: timestamp
+        description: Time of transactions
+        tests:
+          - not_null
+          - dbt_expectations.expect_row_values_to_have_recent_data:
+              datepart: day
+              interval: 1
+      - name: transaction_hash
+        type: string
+        description: Transaction hash
+        methodology: ''
+      - name: protocol_slug
+        type: string
+        description: Abbreviation of the protocol
+        tests:
+          - not_null
+      - name: chain
+        type: string
+        description: The chain to which the contract belongs
+        tests:
+          - not_null
+      - name: protocol_name
+        type: string
+        description: Name of the protocol
+        tests:
+          - not_null
+      - name: contract_address
+        type: string
+        description: Address of contract
+        tests:
+          - not_null
+      - name: wallet_address
+        type: string
+        description: Address of wallat
+        tests:
+          - not_null
+      - name: contract_method_id
+        type: string
+        description: Id of method
+        tests:
+          - not_null
+      - name: contract_method_name
+        type: string
+        description: Name of method
+        tests:
+          - not_null
+      - name: amount_raw
+        type: double
+        description: Transaction amount raw
+      - name: amount
+        type: double
+        description: Transaction amount
+        methodology: 'amount_raw/decimals'

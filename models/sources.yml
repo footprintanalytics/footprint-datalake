@@ -1,0 +1,314 @@
+version: 2
+
+sources:
+  - name: footprint
+#    database: iceberg
+    schema: footprint
+    tables:
+      # Chain
+      - name: arbitrum_logs
+      - name: avalanche_logs
+      - name: boba_logs
+      - name: bsc_logs
+      - name: celo_logs
+      - name: oasys_logs
+      - name: dfk_logs
+      - name: ethereum_logs
+      - name: fantom_logs
+      - name: harmony_logs
+      - name: heco_logs
+      - name: iotex_logs
+      - name: iotex_transaction_logs
+      - name: moonbeam_logs
+      - name: moonriver_logs
+      - name: optimism_logs
+      - name: polygon_logs
+      - name: thunder_core_logs
+      - name: arbitrum_transactions
+      - name: oasys_transactions
+      - name: avalanche_transactions
+      - name: boba_transactions
+      - name: doge_transactions
+      - name: bitcoin_transactions
+      - name: bsc_transactions
+      - name: celo_transactions
+      - name: dfk_transactions
+      - name: eos_transactions
+      - name: ethereum_transactions
+      - name: fantom_transactions
+      - name: harmony_transactions
+      - name: heco_transactions
+      - name: hive_transactions
+      - name: iotex_transactions
+      - name: moonbeam_transactions
+      - name: moonriver_transactions
+      - name: optimism_transactions
+      - name: polygon_transactions
+      - name: solana_transactions
+      - name: thunder_core_transactions
+      - name: wax_transactions
+      - name: arbitrum_token_transfers
+      - name: oasys_token_transfers
+      - name: avalanche_token_transfers
+      - name: boba_token_transfers
+      - name: bsc_token_transfers
+      - name: celo_token_transfers
+      - name: dfk_token_transfers
+      - name: eos_token_transfers
+      - name: ethereum_token_transfers
+      - name: fantom_token_transfers
+      - name: harmony_token_transfers
+      - name: heco_token_transfers
+      - name: moonbeam_token_transfers
+      - name: moonriver_token_transfers
+      - name: optimism_token_transfers
+      - name: polygon_token_transfers
+      - name: solana_token_transfers
+      - name: thunder_core_token_transfers
+      - name: wax_token_transfers
+      - name: wax_actions
+      - name: eos_actions
+      - name: iotex_actions
+      - name: ethereum_blocks
+      - name: ethereum_traces
+      - name: bsc_blocks
+      - name: bsc_traces
+      - name: ethereum_decoded_events
+      - name: chain_info
+
+      # NFT
+      - name: marketplace_nft_collection_daily_stats
+      - name: nft_collection_daily_stats
+      - name: nft_collection_info
+      - name: nft_collection_transfers_daily_stats
+      - name: nft_info
+      - name: nft_latest_stats
+      - name: nft_orders
+      - name: nft_token_attributes
+      - name: nft_transactions
+      - name: nft_transfers
+      - name: nft_aggregator_info
+      - name: nft_aggregator_transactions
+
+      # GameFi
+      - name: gamefi_contract_info
+      - name: gamefi_protocol_daily_stats
+      - name: gamefi_protocol_info
+
+      # DeFi
+      - name: defi_pool_info
+      - name: defi_pool_info_return_token
+      - name: defi_protocol_daily_stats
+      - name: defi_transactions_90d
+      - name: dex_liquidity_transactions
+      - name: dex_swap_transactions
+      - name: option_transactions
+
+      # Token
+      - name: token_chain_daily_stats
+      - name: token_chain_info
+      - name: token_daily_stats
+      - name: token_info
+      - name: token_mint_burn
+      - name: token_price_5min
+
+      # Protocol
+      - name: contract_info
+      - name: protocol_active_address
+      - name: protocol_address_retention_daily
+      - name: protocol_address_retention_monthly
+      - name: protocol_address_retention_weekly
+      - name: protocol_daily_stats
+      - name: protocol_info
+      - name: protocol_transactions
+
+      # Address
+      - name: address_token_balance
+      - name: address_token_balance_latest_stats
+      - name: address_token_daily_stats
+      - name: address_token_transfers
+      - name: solana_account_mapping
+
+      # Label
+      - name: address_tag
+      - name: entity_address_info
+      - name: entity_info
+      - name: entity_latest_stats
+      - name: entity_tag
+      - name: entity_token_latest_stats
+      - name: transaction_entity_tag
+
+############## footprint core data ##############
+  - name: prod_bronze
+#    database: iceberg
+    schema: prod_bronze
+    tables:
+      - name: arbitrum_logs
+      - name: avalanche_logs
+      - name: boba_logs
+      - name: bsc_logs
+      - name: celo_logs
+      - name: dfk_logs
+      - name: ethereum_logs
+      - name: fantom_logs
+      - name: harmony_logs
+      - name: heco_logs
+      - name: iotex_logs
+      - name: iotex_transaction_logs
+      - name: moonbeam_logs
+      - name: moonriver_logs
+      - name: optimism_logs
+      - name: polygon_logs
+      - name: thunder_core_logs
+      - name: oasys_logs
+      - name: arbitrum_transactions
+      - name: avalanche_transactions
+      - name: bitcoin_transactions
+      - name: boba_transactions
+      - name: bsc_transactions
+      - name: celo_transactions
+      - name: doge_transactions
+      - name: oasys_transactions
+      - name: dfk_transactions
+      - name: eos_transactions
+      - name: ethereum_transactions
+      - name: fantom_transactions
+      - name: harmony_transactions
+      - name: heco_transactions
+      - name: hive_transactions
+      - name: iotex_transactions
+      - name: moonbeam_transactions
+      - name: moonriver_transactions
+      - name: optimism_transactions
+      - name: polygon_transactions
+      - name: solana_transactions
+      - name: thunder_core_transactions
+      - name: wax_transactions
+      - name: arbitrum_token_transfers
+      - name: avalanche_token_transfers
+      - name: boba_token_transfers
+      - name: bsc_token_transfers
+      - name: celo_token_transfers
+      - name: oasys_token_transfers
+      - name: dfk_token_transfers
+      - name: eos_token_transfers
+      - name: ethereum_token_transfers
+      - name: fantom_token_transfers
+      - name: harmony_token_transfers
+      - name: heco_token_transfers
+      - name: moonbeam_token_transfers
+      - name: moonriver_token_transfers
+      - name: optimism_token_transfers
+      - name: polygon_token_transfers
+      - name: solana_token_transfers
+      - name: thunder_core_token_transfers
+      - name: wax_token_transfers
+      - name: wax_actions
+      - name: iotex_actions
+  - name: prod_gold
+#    database: iceberg
+    schema: prod_gold
+    tables:
+#      - name: bsc_nft_token_latest_balance
+#      - name: ethereum_nft_token_latest_balance
+#      - name: polygon_nft_token_latest_balance
+#      - name: nft_collection_transfers_daily_stats
+#      - name: nft_collection_holder_daily_stats
+      - name: protocol_active_address
+#      - name: defi_protocol_daily_stats
+#      - name: address_token_balance
+#      - name: entity_token_latest_stats_basic
+#      - name: portfolio_token_latest_stats_basic
+#      - name: address_nft_holding_latest_stats
+#      - name: nft_collection_daily_stats_core
+#      - name: nft_transactions_tags
+#      - name: nft_latest_stats_basic
+#      - name: nft_monthly_stats
+#      - name: nft_holder_wallet_address
+#      - name: address_erc20_token_latest_balance
+#      - name: address_nft_token_latest_balance
+#      - name: address_native_token_latest_balance
+
+  - name: prod_silver
+#    database: iceberg
+    schema: prod_silver
+    tables:
+#      - name: address_nft_latest_holder
+#      - name: ethereum_erc20_token_balance_anchor
+#      - name: ethereum_native_token_balance_anchor
+#      - name: polygon_erc20_token_balance_anchor
+#      - name: ethereum_erc20_token_balance_delta_daily
+#      - name: polygon_erc20_token_balance_delta_daily
+#      - name: ethereum_nft_token_balance_anchor
+#      - name: bsc_nft_token_balance_anchor
+#      - name: polygon_nft_token_balance_anchor
+#      - name: ethereum_nft_token_balance_delta_daily
+#      - name: polygon_nft_token_balance_delta_daily
+#      - name: nft_special_token_transfer
+#      - name: nft_collection_info
+#      - name: nft_info
+#      - name: nft_token_attributes
+#      - name: era7_nft_token_attribute
+#      - name: nft_collection_list
+      - name: token_price_5min
+#      - name: nft_transfers
+#      - name: nft_holder_stats
+#      - name: nft_holder_daily_stats
+#      - name: solana_token_mint_burn
+#      - name: solana_account_mapping
+#      - name: solana_account_mapping_v2
+#      - name: protocol_info_external_mapping
+#      - name: chain_info_external_mapping
+#      - name: ethereum_erc721_token_transfers
+#      - name: ethereum_erc1155_token_transfers
+#      - name: bnb_chain_erc721_token_transfers
+#      - name: bnb_chain_erc1155_token_transfers
+#      - name: polygon_erc721_token_transfers
+#      - name: polygon_erc1155_token_transfers
+#      - name: token_info
+#      - name: token_chain_info
+#      - name: trace_cash_flow
+#      - name: address_tag
+#      - name: token_transfer_trace_cash_flow
+#      - name: native_token_transfer_trace_cash_flow
+#      - name: address_token_min_transaction_time
+#      - name: address_token_balance_anchor_point
+#      - name: address_token_balance_basic
+#      - name: nft_aggregator_info
+#      - name: token_price_cmc_token_list_mapping
+#      - name: nft_transactions
+#      - name: utxo_token_transfer_trace_cash_flow
+#      - name: ethereum_decoded_events
+#      - name: cronos_decoded_events
+#      - name: nft_first_hold_time_v1
+#      - name: address_nft_holding_monthly_stats
+#      - name: address_token_holding_monthly_stats
+#      - name: token_first_hold_time
+#      - name: bsc_decoded_events
+#      - name: polygon_decoded_events
+#      - name: address_list
+#      - name: nft_orders_v2
+#      - name: nft_orders
+#      - name: mocaverse_nft_token_attribute
+#      - name: ethereum_erc20_token_first_hold_time
+#      - name: ethereum_native_token_first_hold_time
+#      - name: polygon_erc20_token_first_hold_time
+#      - name: ethereum_nft_token_first_hold_time
+#      - name: polygon_nft_token_first_hold_time
+#      - name: bsc_nft_token_first_hold_time
+#      - name: protocol_transactions
+#      - name: nft_transfers_view_near_real_time
+#      - name: bsc_galxe_campaign_rewards
+#      - name: bsc_port3_campaign_rewards
+#      - name: campaign_rewards
+#      - name: bsc_port3_proxy_created_event
+#      - name: ethereum_rabbithole_campaign_rewards
+#      - name: arbitrum_questn_internal_collections
+#      - name: bsc_questn_internal_collections
+#      - name: polygon_questn_internal_collections
+
+  - name: prod_origin_data
+#    database: iceberg
+    schema: prod_origin_data
+    tables:
+      - name: user_indicator_ignore_methods

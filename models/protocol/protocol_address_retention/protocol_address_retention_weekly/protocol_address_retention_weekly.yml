@@ -1,0 +1,186 @@
+version: 2
+block:
+  name: protocol_address_retention_weekly
+  domain: protocol
+  sub_domain: protocol_address_retention_weekly
+  status: done
+  level: gold
+  time_period: all
+  fp_menu: true
+  remark: coversc more than 15 chains, 1813 prototocls
+  date_field: end_date
+
+
+models:
+- name: protocol_address_retention_weekly
+  config:
+    schema: gold
+  tests:
+    - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+           - start_date
+           - chain
+           - protocol_slug
+    - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+          column_A: end_date
+          column_B: start_date
+  columns:
+  - description: Statistical week
+    description_cn: 统计周
+    methodology: ''
+    name: cohort
+    type: string
+    tests:
+      - not_null
+  - description: Abbreviation of the protocol
+    description_cn: 协议简称
+    methodology: ''
+    name: protocol_slug
+    type: string
+    tests:
+      - not_null
+  - description: Name of the protocol
+    description_cn: 协议名称
+    methodology: ''
+    name: protocol_name
+    type: string
+  - description: Start time of the statistical week
+    description_cn: 统计周的开始时间
+    methodology: ''
+    name: start_date
+    type: date
+    tests:
+      - not_null
+      - expect_date_continuity:
+          continuity_of_columns: chain
+          datepart: week
+  - description: End time of the statistical week
+    description_cn: 统计周的结束时间
+    methodology: ''
+    name: end_date
+    type: date
+    tests:
+      - not_null
+      - expect_row_values_to_have_recent_data:
+          datepart: week
+          interval: 1
+      - expect_row_values_to_have_recent_data:
+          datepart: week
+          interval: 1
+          row_condition: 1=1 group by chain
+  - description: The chain to which the protocol belongs
+    description_cn: 平台所在的链
+    methodology: ''
+    name: chain
+    type: string
+    tests:
+      - not_null
+  - description: Number of new users at this week
+    description_cn: 本周的新用户数
+    methodology: ''
+    name: number_of_new_users
+    type: integer
+    tests:
+      - not_null
+      - dbt_utils.expression_is_true:
+          expression: " >= 0"
+  - description: Retention rate for the week
+    description_cn: 第1个周的新用户的留存率
+    methodology: ''
+    name: week_1
+    type: float
+    tests:
+      - not_null
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_1 = 1
+  - description: Retention rate for the week
+    description_cn: 第2个周的新用户的留存率
+    methodology: ''
+    name: week_2
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_2 <= 1
+  - description: Retention rate for the week
+    description_cn: 第3个周的新用户的留存率
+    methodology: ''
+    name: week_3
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_3 <= 1
+  - description: Retention rate for the week
+    description_cn: 第4个周的新用户的留存率
+    methodology: ''
+    name: week_4
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_4 <= 1
+  - description: Retention rate for the week
+    description_cn: 第5个周的新用户的留存率
+    methodology: ''
+    name: week_5
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_5 <= 1
+  - description: Retention rate for the week
+    description_cn: 第6个周的新用户的留存率
+    methodology: ''
+    name: week_6
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_6 <= 1
+  - description: Retention rate for the week
+    description_cn: 第7个周的新用户的留存率
+    methodology: ''
+    name: week_7
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_7 <= 1
+  - description: Retention rate for the week
+    description_cn: 第8个周的新用户的留存率
+    methodology: ''
+    name: week_8
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_8 <= 1
+  - description: Retention rate for the week
+    description_cn: 第9个周的新用户的留存率
+    methodology: ''
+    name: week_9
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_9 <= 1
+  - description: Retention rate for the week
+    description_cn: 第10个周的新用户的留存率
+    methodology: ''
+    name: week_10
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_10 <= 1
+  - description: Retention rate for the week
+    description_cn: 第11个周的新用户的留存率
+    methodology: ''
+    name: week_11
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_11 <= 1
+  - description: Retention rate for the week
+    description_cn: 第12个周的新用户的留存率
+    methodology: ''
+    name: week_12
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: week_12 <= 1
+  description: This table can be used to analyze metrics related to the number of users for different protocols.
+  from_source: Chain data(transactions)
+

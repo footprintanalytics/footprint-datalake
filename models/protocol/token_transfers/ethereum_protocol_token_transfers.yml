@@ -1,0 +1,39 @@
+
+version: 2
+
+block:
+  name: ethereum_protocol_token_transfers
+  domain: protocol
+  sub_domain: protocol_metrics
+
+models:
+  - name: ethereum_protocol_token_transfers
+    config:
+      schema: silver
+      tags: ['protocol_token_transfers']
+
+    columns:
+      - name: chain
+        type: string
+      - name: block_timestamp
+        type: timestamp
+      - name: transaction_hash
+        type: string
+      - name: wallet_address
+        type: string
+      - name: contract_address
+        type: string
+      - name: token_address
+        type: string
+      - name: protocol_slug
+        type: string
+      - name: token_symbol
+        type: string
+      - name: decimals
+        type: integer
+      - name: type
+        type: string
+      - name: amount
+        type: float
+      - name: value
+        type: float
