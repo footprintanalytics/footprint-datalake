@@ -27,17 +27,17 @@ If you want to know more, you can go to dbt's official website, so I won't expan
 
 - create a python virtual environment
 ```shell
-pipenv shell
+$ pipenv shell
 ```
 
 - install python dependencies
 ```shell
-pipenv install
+$ pipenv install
 ```
 
 - install dbt dependencies
 ```shell
-dbt deps
+$ dbt deps
 ```
 
 # Usage
