@@ -1,0 +1,80 @@
+
+version: 2
+
+block:
+  name: protocol_token_transfers
+  date_field: block_timestamp
+  level: silver
+  status: done
+  remark: coversc more than 10 evm chains
+  time_period: all
+  domain: protocol
+  fp_menu: true
+  sub_domain: protocol_metrics
+  dependencies:
+    - bsc_protocol_token_transfers
+    - ethereum_protocol_token_transfers
+    - arbitrum_protocol_token_transfers
+    - avalanche_protocol_token_transfers
+    - boba_protocol_token_transfers
+    - celo_protocol_token_transfers
+    - cronos_protocol_token_transfers
+    - dfk_protocol_token_transfers
+    - fantom_protocol_token_transfers
+    - harmony_protocol_token_transfers
+    - moonbeam_protocol_token_transfers
+    - moonriver_protocol_token_transfers
+    - polygon_protocol_token_transfers
+    - thunder_core_protocol_token_transfers
+    - ronin_protocol_token_transfers
+    - solana_protocol_token_transfers
+    - oasys_protocol_token_transfers
+    - home_verse_protocol_token_transfers
+
+models:
+  - name: protocol_token_transfers
+    description: This table records the token transfers for different protocols.
+    config:
+      schema: silver
+      tags: ['protocol_token_transfers']
+
+    columns:
+      - name: chain
+        type: string
+        description: The chain to which the contract belongs
+      - name: block_timestamp
+        type: timestamp
+        description: Time of transactions
+      - name: transaction_hash
+        type: string
+        description: Transaction hash
+      - name: wallet_address
+        type: string
+        description: Address of wallat
+      - name: contract_address
+        type: string
+        description: Address of contract
+      - name: token_address
+        type: string
+        description: Address of platform token
+      - name: protocol_slug
+        type: string
+        description: Abbreviation of the protocol
+      - name: token_symbol
+        type: string
+        description: Symbol of platform token
+      - name: decimals
+        type: integer
+        description: Decimals of platform token
+      - name: type
+        type: string
+        description: The flow value in/out contract
+      - name: protocol_type
+        type: string
+        description: Type of protocol
+      - name: amount
+        type: float
+        description: Amount of transfer
+      - name: value
+        type: float
+        description: USD value of transfer

@@ -1,0 +1,116 @@
+
+version: 2
+
+block:
+  name: protocol_daily_stats
+  domain: protocol
+  fp_menu: true
+  status: done
+  time_period: all
+  category: gamefi
+  remark: coversc more than 17 chains, 2006 prototocls
+  date_field: on_date
+  level: gold
+  sub_domain: protocol_metrics
+  dependencies:
+    - protocol_active_address
+    - protocol_token_transfers
+
+models:
+  - name: protocol_daily_stats
+    description: This table can be used to analyze metrics related to the number of users for different GameFi protocols.
+    config:
+      schema: gold
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - on_date
+            - chain
+            - protocol_slug
+      - latest_time_after_yesterday_by_columns:
+          date_col: on_date
+          columns:
+            - chain
+    columns:
+      - name: on_date
+        type: date
+        description: Statistical date
+        tests:
+          - not_null
+          - dbt_expectations.expect_row_values_to_have_recent_data:
+              datepart: day
+              interval: 1
+      - name: chain
+        type: string
+        tests:
+          - not_null
+        description: The chain to which the contract belongs
+        methodology: ''
+      - name: protocol_slug
+        type: string
+        description: Abbreviation of the protocol
+        tests:
+          - not_null
+      - name: protocol_name
+        type: string
+        description: Name of the protocol
+      - name: number_of_active_users
+        type: integer
+        description: The number of active wallet addresses interacting with dapp's smart contracts
+        methodology: count(distinct wallet_address)
+      - name: number_of_new_users
+        type: integer
+        description: The number of new addresses who made the first transaction with the smart contract of this protocol on the statistical day
+        methodology: count(distinct wallet_address) from (select min(day) from transactions group by wallet_address)
+      - name: number_of_total_users
+        type: integer
+        description: The cumulative number of users who made the first transaction with the smart contract of this protocol on the statistical day
+        methodology: cumulate(new_address)
+      - name: new_users_1d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of new users 1 day ago
+        methodology: （new_users/d1_ago_new_users）-1
+      - name: new_users_7d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of new users 7 days ago
+        methodology: （new_users/d7_ago_new_users）-1
+      - name: new_users_30d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of new users 30 days ago
+        methodology: （new_users/d30_ago_new_users）-1
+      - name: new_users_180d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of new users 180 days ago
+        methodology: （new_users/d180_ago_new_users）-1
+      - name: new_users_360d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of new users 360 days ago
+        methodology: （new_users/d360_ago_new_users）-1
+      - name: active_users_1d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of active users 1 day ago
+        methodology: (unique_users/d1_ago_unique_users）-1
+      - name: active_users_7d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of active users 7 days ago
+        methodology: (unique_users/d7_ago_unique_users）-1
+      - name: active_users_30d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of active users 30 days ago
+        methodology: (unique_users/d30_ago_unique_users）-1
+      - name: active_users_180d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of active users 180 days ago
+        methodology: (unique_users/d180_ago_unique_users）-1
+      - name: active_users_360d_pct_change
+        type: double
+        description: The growth rate of the current number of new users compared to the number of active users 360 days ago
+        methodology: (unique_users/d360_ago_unique_users）-1
+      - name: volume
+        type: double
+        description: the flat value incoming dapp contract
+        methodology: sum(value) from protocol_token_transfers where type = 'in'
+      - name: number_of_transactions
+        type: double
+        description: the number of transaction between wallet and contract_address
+        methodology: count(distinct transaction_hash) from protocol_transactions

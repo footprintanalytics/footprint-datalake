@@ -1,0 +1,180 @@
+version: 2
+block:
+  name: protocol_address_retention_monthly
+  domain: protocol
+  sub_domain: protocol_address_retention_monthly
+  status: done
+  level: gold
+  time_period: all
+  fp_menu: true
+  remark: coversc more than 15 chains, 1813 prototocls
+  date_field: end_date
+
+
+models:
+- name: protocol_address_retention_monthly
+  config:
+    schema: gold
+  tests:
+    - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+           - start_date
+           - chain
+           - protocol_slug
+  columns:
+  - description: Statistical month
+    description_cn: 统计月份
+    methodology: ''
+    name: cohort
+    type: string
+    tests:
+      - not_null
+  - description: Abbreviation of the protocol
+    description_cn: 协议简称
+    methodology: ''
+    name: protocol_slug
+    type: string
+    tests:
+      - not_null
+  - description: Name of the protocol
+    description_cn: 协议名称
+    methodology: ''
+    name: protocol_name
+    type: string
+  - description: Start time of the statistical month
+    description_cn: 统计月份的开始时间
+    methodology: ''
+    name: start_date
+    type: date
+    tests:
+      - not_null
+      - expect_date_continuity:
+          continuity_of_columns: chain
+          datepart: month
+  - description: End time of the statistical month
+    description_cn: 统计月份的结束时间
+    methodology: ''
+    name: end_date
+    type: date
+    tests:
+      - not_null
+      - expect_row_values_to_have_recent_data:
+          datepart: month
+          interval: 1
+      - expect_row_values_to_have_recent_data:
+          datepart: month
+          interval: 1
+          row_condition: 1=1 group by chain
+  - description: The chain to which the protocol belongs
+    description_cn: 平台所在的链
+    methodology: ''
+    name: chain
+    type: string
+    tests:
+      - not_null
+  - description: Number of new users at this month
+    description_cn: 本月的新用户数
+    methodology: ''
+    name: number_of_new_users
+    type: integer
+    tests:
+      - not_null
+  - description: Retention rate for the month
+    description_cn: 第1个月的新用户的留存率
+    methodology: ''
+    name: month_1
+    type: float
+    tests:
+      - not_null
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_1 = 1
+  - description: Retention rate for the month
+    description_cn: 第2个月的新用户的留存率
+    methodology: ''
+    name: month_2
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_2 <= 1
+  - description: Retention rate for the month
+    description_cn: 第3个月的新用户的留存率
+    methodology: ''
+    name: month_3
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_3 <= 1
+  - description: Retention rate for the month
+    description_cn: 第4个月的新用户的留存率
+    methodology: ''
+    name: month_4
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_4 <= 1
+  - description: Retention rate for the month
+    description_cn: 第5个月的新用户的留存率
+    methodology: ''
+    name: month_5
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_5 <= 1
+  - description: Retention rate for the month
+    description_cn: 第6个月的新用户的留存率
+    methodology: ''
+    name: month_6
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_6 <= 1
+  - description: Retention rate for the month
+    description_cn: 第7个月的新用户的留存率
+    methodology: ''
+    name: month_7
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_7 <= 1
+  - description: Retention rate for the month
+    description_cn: 第8个月的新用户的留存率
+    methodology: ''
+    name: month_8
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_8 <= 1
+  - description: Retention rate for the month
+    description_cn: 第9个月的新用户的留存率
+    methodology: ''
+    name: month_9
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_9 <= 1
+  - description: Retention rate for the month
+    description_cn: 第10个月的新用户的留存率
+    methodology: ''
+    name: month_10
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_10 <= 1
+  - description: Retention rate for the month
+    description_cn: 第11个月的新用户的留存率
+    methodology: ''
+    name: month_11
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_11 <= 1
+  - description: Retention rate for the month
+    description_cn: 第12个月的新用户的留存率
+    methodology: ''
+    name: month_12
+    type: float
+    tests:
+      - expect_not_null_cloumn_in_value_range:
+            _filter: month_12 <= 1
+  description: This table can be used to analyze metrics related to the number of users for different protocols.
+  from_source: Chain data(transactions)

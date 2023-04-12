@@ -9,5 +9,13 @@ footprint:
       password: password
       host: localhost
       threads: 1
+    dev:
+      type: trino
+      schema: prod
+      database: iceberg
+      user: root
+      host: 127.0.0.1
+      port: 8080
+      threads: 1
 
 

@@ -1,0 +1,72 @@
+
+version: 2
+
+block:
+  name: ethereum_protocol_transactions
+  domain: protocol
+
+models:
+  - name: ethereum_protocol_transactions
+    config:
+      schema: silver
+      tags: ['protocol_transactions']
+
+    columns:
+      - name: block_timestamp
+        type: timestamp
+        description: time of transactions
+        description_cn: 交易时间
+        tests:
+          - not_null
+      - name: transaction_hash
+        type: string
+      - name: protocol_slug
+        type: string
+        description: abbreviation of the protocol
+        description_cn: 协议简称
+        tests:
+          - not_null
+      - name: chain
+        type: string
+        description: the chain to which the contract belongs
+        description_cn: 合约所在的链
+        tests:
+          - not_null
+      - name: protocol_name
+        type: string
+        description: name of the protocol
+        description_cn: 协议名称
+        tests:
+          - not_null
+      - name: contract_address
+        type: string
+        description: address of contract
+        description_cn: 合约地址
+        tests:
+          - not_null
+      - name: wallet_address
+        type: string
+        description: address of wallat
+        description_cn: 钱包地址
+        tests:
+          - not_null
+      - name: contract_method_id
+        type: string
+        description: id of method
+        description_cn: 方法id
+        tests:
+          - not_null
+      - name: contract_method_name
+        type: string
+        description: name of method
+        description_cn: 方法名称
+        tests:
+          - not_null
+      - name: amount_raw
+        type: double
+        description: transaction amount raw
+        description_cn: 交易数量
+      - name: amount
+        type: double
+        description: transaction amount
+        description_cn: 交易数量 / decimals

@@ -1,0 +1,74 @@
+
+version: 2
+
+block:
+  name: protocol_active_address
+  domain: protocol
+  category: gamefi
+  status: done
+  level: gold
+  remark: This table records the GameFi protocol active address data
+  date_field: on_date
+  time_period: all
+  fp_menu: true
+  sub_domain: protocol_metrics
+  dependencies:
+    - protocol_transactions
+
+models:
+  - name: protocol_active_address
+    config:
+      schema: gold
+      materialized: incremental
+      alias: protocol_active_address
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - on_date
+            - chain
+            - wallet_address
+            - protocol_slug
+      - latest_time_after_yesterday_by_columns:
+          date_col: on_date
+          columns:
+            - chain
+
+    columns:
+      - name: on_date
+        type: date
+        description: "The statistical date"
+        tests:
+          - not_null
+          - dbt_expectations.expect_row_values_to_have_recent_data:
+              datepart: day
+              interval: 1
+      - name: chain
+        type: string
+        description: "The chain of protocol"
+        tests:
+          - not_null
+      - name: protocol_slug
+        type: string
+        description: "Abbreviation of protocol"
+        tests:
+          - not_null
+      - name: wallet_address
+        type: string
+        description: "Wallet address"
+        tests:
+          - not_null
+      - name: protocol_name
+        type: string
+        description: "Name of protocol"
+      - name: is_new_address
+        type: integer
+        description: "First transaction address"
+        tests:
+          - not_null
+      - name: protocol_type
+        type: string
+        description: "Type of protocol"
+        is_hidden: true
+
+    description: This table records the protocol active address data.
+    from_source: ''
